@@ -1,0 +1,32 @@
+<%= form_with(model: post, local: true, wrapper: :default, defaults: { wrapper: false }) do |form| %>
+  <% if post.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+      <ul>
+        <% post.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :title, class: "label" %>
+    <%= form.text_field :title, class: "input" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :content, class: "label" %>
+    <%= form.text_area :content, class: "textarea" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description, class: "label" %>
+    <%= form.rich_text_area :description, class: "textarea" %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "Save", class: "button is-primary" %>
+  </div>
+<% end %>
